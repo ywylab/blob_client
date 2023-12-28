@@ -1,26 +1,37 @@
 import { Layout, Menu } from "antd";
-import { Header } from "antd/es/layout/layout";
 import { useState } from "react";
-
+const { Sider } = Layout;
 function App() {
-  const [count, setCount] = useState(0);
-  const headMenu = [1, 2, 3, 4].map((item) => ({
-    key: item,
-    label: "导航" + item,
-  }));
+  const [collapsed, setCollapsed] = useState(false);
+  const menu = [
+    {
+      key: 1,
+      label: "主页",
+    },
+    {
+      key: 2,
+      label: "个人简历",
+    },
+    {
+      key: 3,
+      label: "工具箱",
+    },
+  ];
   return (
-    <Layout>
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
+    <Layout className="min-h-screen">
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+      >
+        <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={headMenu}
-          style={{ flex: 1, minWidth: 0 }}
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          items={menu}
         />
-      </Header>
-      <div className="text-blue-50 ">123</div>
+      </Sider>
     </Layout>
   );
 }
