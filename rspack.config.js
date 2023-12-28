@@ -12,6 +12,13 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.css$/,
+				use: [
+					'postcss-loader'
+				],
+				type: 'css/auto', // 如果你需要将 '*.module.css' 视为 CSS Module 那么将 'type' 设置为 'css/auto' 否则设置为 'css'
+			},
+			{
 				test: /\.svg$/,
 				type: "asset"
 			},
