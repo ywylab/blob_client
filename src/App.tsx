@@ -2,7 +2,7 @@ import { Layout, Menu } from "antd";
 import { useState } from "react";
 const { Sider } = Layout;
 function App() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const menu = [
     {
       key: 1,
@@ -16,6 +16,14 @@ function App() {
       key: 3,
       label: "工具箱",
     },
+    {
+      key: 4,
+      label: "GPT",
+    },
+    {
+      key: 5,
+      label: "组件库",
+    },
   ];
   return (
     <Layout className="min-h-screen">
@@ -24,7 +32,6 @@ function App() {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div className="demo-logo-vertical" />
         <Menu
           theme="dark"
           defaultSelectedKeys={["1"]}
