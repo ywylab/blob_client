@@ -13,15 +13,13 @@ export default function Index() {
       timeStemp: dayjs().subtract(index, "day").format("YYYY-MM-DD"),
     }));
   return (
-    <div className="flex gap-[10px] w-full bg-white">
-      <div>
-        {articleList.map((item) => (
-          <div className="flex items-center" key={item.timeStemp}>
-            <div>{item.title}</div>
-            <div>{item.timeStemp}</div>
-          </div>
-        ))}
-      </div>
+    <div className="  w-full bg-white">
+      {articleList.map((item) => (
+        <div className="flex items-center justify-between" key={item.timeStemp}>
+          <div>{item.title}</div>
+          <div>{item.timeStemp}</div>
+        </div>
+      ))}
     </div>
   );
 }
