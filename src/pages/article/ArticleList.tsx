@@ -4,8 +4,6 @@ import dayjs from "dayjs";
 export default function Index() {
   const [searchParams] = useSearchParams();
   const { id } = useParams();
-  console.log(searchParams.get("a"));
-  console.log(typeof id);
   const articleList = Array(10)
     .fill(0)
     .map((_, index) => ({

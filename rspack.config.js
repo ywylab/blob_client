@@ -2,7 +2,6 @@ const rspack = require("@rspack/core");
 const refreshPlugin = require("@rspack/plugin-react-refresh");
 const isDev = process.env.NODE_ENV === "development";
 const path = require('path')
-console.log(__filename)
 /**
  * @type {import('@rspack/cli').Configuration}
  */

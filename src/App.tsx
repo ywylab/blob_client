@@ -1,6 +1,6 @@
 import { Layout, Menu } from "antd";
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import UserCard from "./components/UserCard";
 const { Sider, Content, Header } = Layout;
 const menuRaw = [
@@ -9,7 +9,7 @@ const menuRaw = [
     label: "主页",
   },
   {
-    key: "/article",
+    key: "article",
     label: "文章",
     subMenu: [{ key: "1", label: "子路由1" }],
   },
@@ -29,6 +29,10 @@ const menuRaw = [
     key: "5",
     label: "组件库",
   },
+  {
+    key: "test",
+    label: "测试页面",
+  },
 ];
 const menu = menuRaw.map((item) => ({
   key: item.key,
@@ -36,13 +40,13 @@ const menu = menuRaw.map((item) => ({
 }));
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuSelectedKeys, setMenuSelectedKeys] = useState<string[]>([
-    menu[0].key,
+    location.pathname.split("/")[1],
   ]);
   const subMenu = menuRaw.find(
     (item) => item.key === menuSelectedKeys[0]
   )?.subMenu;
-  console.log(<div></div>);
   return (
     <Layout className="min-h-screen max-w-full overflow-hidden">
       <Header style={{ display: "flex", alignItems: "center" }}>
@@ -54,7 +58,6 @@ function App() {
           items={menu}
           style={{ flex: 1, minWidth: 0 }}
           onClick={(item) => {
-            console.log(item);
             navigate(item.key);
             setMenuSelectedKeys([item.key]);
           }}
