@@ -1,13 +1,23 @@
 import { Layout, Menu } from "antd";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-const { Sider, Content } = Layout;
+import { Outlet, useNavigate } from "react-router-dom";
+import UserCard from "./components/UserCard";
+const { Sider, Content, Header } = Layout;
 function App() {
-  const [collapsed, setCollapsed] = useState(true);
+  const navigate = useNavigate();
+  const [menuSelectedKeys, setMenuSelectedKeys] = useState<string[]>([
+    "/article",
+  ]);
   const menu = [
     {
       key: 1,
       label: "主页",
+    },
+    {
+      key: "/article",
+      label: "文章",
+      path: "111",
+      subMenu: [{ key: "1", label: "子路由1" }],
     },
     {
       key: 2,
@@ -26,23 +36,39 @@ function App() {
       label: "组件库",
     },
   ];
+  const subMenu = menu.find(
+    (item) => item.key === menuSelectedKeys[0]
+  )?.subMenu;
   return (
-    <Layout className="min-h-screen">
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
+    <Layout className="min-h-screen max-w-full overflow-hidden">
+      <Header style={{ display: "flex", alignItems: "center" }}>
+        <div className="demo-logo" />
         <Menu
           theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
+          mode="horizontal"
+          selectedKeys={menuSelectedKeys}
           items={menu}
+          style={{ flex: 1, minWidth: 0 }}
+          onClick={(item) => {
+            console.log(item);
+            navigate(item.key);
+            setMenuSelectedKeys([item.key]);
+          }}
         />
-      </Sider>
-      <Content className="p-[20px]">
-        <Outlet />
-      </Content>
+      </Header>
+      <Layout className="flex gap-10">
+        <Sider theme="light">
+          {" "}
+          {subMenu ? <Menu items={subMenu} /> : null}
+        </Sider>
+        <Content className="flex-grow">
+          <Outlet />
+        </Content>
+        <Sider theme="light" className="bg-transparent">
+          {" "}
+          <UserCard></UserCard>
+        </Sider>
+      </Layout>
     </Layout>
   );
 }
