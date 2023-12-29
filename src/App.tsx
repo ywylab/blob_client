@@ -1,6 +1,7 @@
 import { Layout, Menu } from "antd";
 import { useState } from "react";
-const { Sider } = Layout;
+import { Link, Outlet } from "react-router-dom";
+const { Sider, Content } = Layout;
 function App() {
   const [collapsed, setCollapsed] = useState(true);
   const menu = [
@@ -39,6 +40,9 @@ function App() {
           items={menu}
         />
       </Sider>
+      <Content className="p-[20px]">
+        <Outlet />
+      </Content>
     </Layout>
   );
 }

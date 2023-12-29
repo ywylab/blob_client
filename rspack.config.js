@@ -62,8 +62,13 @@ module.exports = {
 		}),
 		new rspack.ProgressPlugin({}),
 		new rspack.HtmlRspackPlugin({
-			template: "./index.html"
+			template: "./index.html",
+			publicPath: '/'
 		}),
 		isDev ? new refreshPlugin() : null
-	].filter(Boolean)
+	].filter(Boolean),
+	devServer: {
+		historyApiFallback: true,
+		watchFiles: [__filename, './src/**/*.{js,jsx,ts,tsx}'],
+	},
 };
