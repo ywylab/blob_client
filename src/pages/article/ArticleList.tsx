@@ -11,7 +11,7 @@ export default function Index() {
       timeStemp: dayjs().subtract(index, "day").format("YYYY-MM-DD"),
     }));
   return (
-    <div className="  w-full bg-white">
+    <div className="w-full bg-white">
       {articleList.map((item) => (
         <div className="flex items-center justify-between" key={item.timeStemp}>
           <div>{item.title}</div>

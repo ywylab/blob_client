@@ -20,6 +20,15 @@ module.exports = {
 				type: 'css/auto', // 如果你需要将 '*.module.css' 视为 CSS Module 那么将 'type' 设置为 'css/auto' 否则设置为 'css'
 			},
 			{
+				test: /\.less$/,
+				use: [
+					{
+						loader: 'less-loader',
+					},
+				],
+				type: 'css/auto',
+			},
+			{
 				test: /\.svg$/,
 				type: "asset"
 			},

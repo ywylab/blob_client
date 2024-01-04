@@ -2,6 +2,7 @@ import { Layout, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import UserCard from "./components/UserCard";
+import aaa from "./app.module.less";
 const { Sider, Content, Header } = Layout;
 const menuRaw = [
   {
@@ -48,9 +49,8 @@ function App() {
     (item) => item.key === menuSelectedKeys[0]
   )?.subMenu;
   return (
-    <Layout className="min-h-screen max-w-full overflow-hidden">
+    <Layout className={`min-h-screen max-w-full overflow-hidden ${aaa.aaa}`}>
       <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
         <Menu
           theme="dark"
           mode="horizontal"
