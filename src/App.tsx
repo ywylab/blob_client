@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import UserCard from "./components/UserCard";
 import ReactIcon from "@/assets/react.svg";
-import TailwindIcon from "@/assets/tailwindLogo.svg";
+import TailwindIcon from "@/assets/tailwindLogo.png";
 import RspackLogo from "@/assets/rspackLogo.png";
 import style from "@/styles/app.module.less";
 const { Sider, Content, Header, Footer } = Layout;
@@ -97,13 +97,14 @@ function App() {
           {showCard ? <UserCard></UserCard> : null}
         </Sider>
       </Layout>
-      <Footer className="bg-white text-center">
+      <Footer className="flex items-center justify-center gap-[8px]">
+        powered by
         {techList.map((item) => (
           <img
             key={item.name}
             src={item.img}
             alt=""
-            className={`inline-block w-[35px] h-[35px] rounded-full   bg-gray-100 p-[5px] cursor-pointer ${style.footerImg}`}
+            className={`inline-block w-[35px] h-[35px] rounded-full bg-white p-[5px] cursor-pointer ${style.footerImg}`}
             onClick={() => {
               window.open(item.url);
             }}
