@@ -8,10 +8,6 @@ import RspackLogo from "@/assets/rspackLogo.png";
 import style from "@/styles/app.module.less";
 const { Sider, Content, Header, Footer } = Layout;
 const menuRaw = [
-  // {
-  //   key: "home",
-  //   label: "主页",
-  // },
   {
     key: "article",
     label: "文章",
@@ -22,18 +18,10 @@ const menuRaw = [
     label: "个人简历",
   },
   {
-    key: "3",
+    key: "tools",
     label: "工具箱",
     subMenu: [{ key: "1", label: "数据转换" }],
   },
-  // {
-  //   key: "4",
-  //   label: "GPT",
-  // },
-  // {
-  //   key: "5",
-  //   label: "组件库",
-  // },
   {
     key: "test",
     label: "测试页面",

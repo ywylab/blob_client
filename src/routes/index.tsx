@@ -5,6 +5,7 @@ import ArticleList from "@/pages/article/ArticleList";
 import Index from "@/pages/article/ArticleList";
 import Test from "@/pages/Test";
 import Resume from "@/pages/resume/Index";
+import Tools from "@/pages/tools/Index";
 // import Article from
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "resume",
         element: <Resume />,
+      },
+      {
+        path: "tools",
+        element: <Tools />,
       },
       {
         path: "test",

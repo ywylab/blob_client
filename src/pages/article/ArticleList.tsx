@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 export default function Index() {
-  const articleList = Array(10)
+  const articleList = Array(100)
     .fill(0)
     .map((_, index) => ({
       title: `文章 ${index}`,
