@@ -1,21 +1,21 @@
-import { useParams, useSearchParams } from "react-router-dom";
 import dayjs from "dayjs";
 
 export default function Index() {
-  const [searchParams] = useSearchParams();
-  const { id } = useParams();
   const articleList = Array(10)
     .fill(0)
     .map((_, index) => ({
       title: `文章 ${index}`,
-      timeStemp: dayjs().subtract(index, "day").format("YYYY-MM-DD"),
+      timeStamp: dayjs().subtract(index, "day").format("YYYY-MM-DD"),
     }));
   return (
-    <div className="w-full bg-white">
+    <div className="w-full h-full">
       {articleList.map((item) => (
-        <div className="flex items-center justify-between" key={item.timeStemp}>
+        <div
+          className="flex items-center justify-between border-b-[1px] border-b-gray-300 p-2 hover:bg-blue-100 cursor-pointer"
+          key={item.timeStamp}
+        >
           <div>{item.title}</div>
-          <div>{item.timeStemp}</div>
+          <div>{item.timeStamp}</div>
         </div>
       ))}
     </div>

@@ -2,8 +2,7 @@ import { Layout, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import UserCard from "./components/UserCard";
-import aaa from "./app.module.less";
-const { Sider, Content, Header } = Layout;
+const { Sider, Content, Header, Footer } = Layout;
 const menuRaw = [
   {
     key: "home",
@@ -12,7 +11,6 @@ const menuRaw = [
   {
     key: "article",
     label: "文章",
-    subMenu: [{ key: "1", label: "子路由1" }],
   },
   {
     key: "2",
@@ -21,6 +19,7 @@ const menuRaw = [
   {
     key: "3",
     label: "工具箱",
+    subMenu: [{ key: "1", label: "数据转换" }],
   },
   {
     key: "4",
@@ -49,7 +48,7 @@ function App() {
     (item) => item.key === menuSelectedKeys[0]
   )?.subMenu;
   return (
-    <Layout className={`min-h-screen max-w-full overflow-hidden ${aaa.aaa}`}>
+    <Layout className="min-h-screen max-w-full overflow-hidden">
       <Header style={{ display: "flex", alignItems: "center" }}>
         <Menu
           theme="dark"
@@ -63,19 +62,22 @@ function App() {
           }}
         />
       </Header>
-      <Layout className="flex gap-10 items-center ">
-        <Sider theme="light">
+      <Layout className="flex gap-10 items-start h-full p-[20px]">
+        <Sider theme="light" className="rounded-lg overflow-hidden">
           {" "}
           {!!subMenu ? <Menu items={subMenu} /> : null}
         </Sider>
-        <Content className="flex-grow">
+        <Content className="flex-grow self-stretch rounded-lg overflow-hidden p-[20px] bg-white">
           <Outlet />
         </Content>
-        <Sider theme="light">
+        <Sider theme="light" className="rounded-lg overflow-hidden">
           {" "}
           <UserCard></UserCard>
         </Sider>
       </Layout>
+      <Footer style={{ textAlign: "center" }}>
+        Ant Design ©2023 Created by Ant UED
+      </Footer>
     </Layout>
   );
 }
