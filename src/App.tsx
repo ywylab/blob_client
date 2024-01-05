@@ -20,7 +20,11 @@ const menuRaw = [
   {
     key: "tools",
     label: "工具箱",
-    subMenu: [{ key: "1", label: "数据转换" }],
+    subMenu: [
+      { key: "1", label: "数据转换" },
+      { key: "1", label: "数据转换" },
+      { key: "1", label: "数据转换" },
+    ],
   },
   {
     key: "test",
