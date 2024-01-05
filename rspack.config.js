@@ -29,7 +29,7 @@ module.exports = {
 				type: 'css/auto',
 			},
 			{
-				test: /\.svg$/,
+				test: /\.(svg|png)$/,
 				type: "asset"
 			},
 			{
@@ -79,7 +79,6 @@ module.exports = {
 	].filter(Boolean),
 	devServer: {
 		historyApiFallback: true,
-		watchFiles: [__filename, './src/**/*.{js,jsx,ts,tsx}'],
 	},
 	resolve: {
 		alias: {

@@ -2,12 +2,16 @@ import { Layout, Menu } from "antd";
 import { useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import UserCard from "./components/UserCard";
+import ReactIcon from "@/assets/react.svg";
+import TailwindIcon from "@/assets/tailwindLogo.svg";
+import RspackLogo from "@/assets/rspackLogo.png";
+import style from "./app.module.less";
 const { Sider, Content, Header, Footer } = Layout;
 const menuRaw = [
-  {
-    key: "home",
-    label: "主页",
-  },
+  // {
+  //   key: "home",
+  //   label: "主页",
+  // },
   {
     key: "article",
     label: "文章",
@@ -21,14 +25,14 @@ const menuRaw = [
     label: "工具箱",
     subMenu: [{ key: "1", label: "数据转换" }],
   },
-  {
-    key: "4",
-    label: "GPT",
-  },
-  {
-    key: "5",
-    label: "组件库",
-  },
+  // {
+  //   key: "4",
+  //   label: "GPT",
+  // },
+  // {
+  //   key: "5",
+  //   label: "组件库",
+  // },
   {
     key: "test",
     label: "测试页面",
@@ -38,6 +42,23 @@ const menu = menuRaw.map((item) => ({
   key: item.key,
   label: item.label,
 }));
+const techList = [
+  {
+    img: ReactIcon,
+    name: "react",
+    url: "https://reactjs.org/",
+  },
+  {
+    img: RspackLogo,
+    name: "react",
+    url: "https://www.rspack.dev/zh/",
+  },
+  {
+    img: TailwindIcon,
+    name: "tailwind",
+    url: "https://tailwindcss.com/",
+  },
+];
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -75,8 +96,18 @@ function App() {
           <UserCard></UserCard>
         </Sider>
       </Layout>
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2023 Created by Ant UED
+      <Footer className="bg-white text-center">
+        {techList.map((item) => (
+          <img
+            key={item.name}
+            src={item.img}
+            alt=""
+            className={`inline-block w-[35px] h-[35px] rounded-full   bg-gray-100 p-[5px] cursor-pointer ${style.footerImg}`}
+            onClick={() => {
+              window.open(item.url);
+            }}
+          />
+        ))}
       </Footer>
     </Layout>
   );
