@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.less";
-import "./tailwind.css";
+import "@/styles/index.less";
+import "@/styles//tailwind.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/root.tsx";
 import { ConfigProvider } from "antd";

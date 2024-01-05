@@ -5,7 +5,7 @@ import UserCard from "./components/UserCard";
 import ReactIcon from "@/assets/react.svg";
 import TailwindIcon from "@/assets/tailwindLogo.svg";
 import RspackLogo from "@/assets/rspackLogo.png";
-import style from "./app.module.less";
+import style from "@/styles/app.module.less";
 const { Sider, Content, Header, Footer } = Layout;
 const menuRaw = [
   // {
@@ -15,9 +15,10 @@ const menuRaw = [
   {
     key: "article",
     label: "文章",
+    showCard: true,
   },
   {
-    key: "2",
+    key: "resume",
     label: "个人简历",
   },
   {
@@ -65,9 +66,9 @@ function App() {
   const [menuSelectedKeys, setMenuSelectedKeys] = useState<string[]>([
     location.pathname.split("/")[1],
   ]);
-  const subMenu = menuRaw.find(
-    (item) => item.key === menuSelectedKeys[0]
-  )?.subMenu;
+  let matchedMenu = menuRaw.find((item) => item.key === menuSelectedKeys[0]);
+  let subMenu = matchedMenu?.subMenu;
+  let showCard = matchedMenu.showCard;
   return (
     <Layout className="min-h-screen max-w-full overflow-hidden">
       <Header style={{ display: "flex", alignItems: "center" }}>
@@ -93,7 +94,7 @@ function App() {
         </Content>
         <Sider theme="light" className="rounded-lg overflow-hidden">
           {" "}
-          <UserCard></UserCard>
+          {showCard ? <UserCard></UserCard> : null}
         </Sider>
       </Layout>
       <Footer className="bg-white text-center">
